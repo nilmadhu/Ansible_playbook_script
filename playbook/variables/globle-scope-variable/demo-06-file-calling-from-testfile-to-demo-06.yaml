@@ -1,0 +1,23 @@
+---
+
+# Two files are used. taking test-file for reference and calling into ansible palybook to execute the task (variable call file)
+
+
+- name: crearting a file using global vaiable scope
+  hosts: dev
+  vars_files:
+        - /root/playbook/variables/globle-scope-variable/test-file-calling-in-demo-06.yaml
+  tasks:
+        - name: creating user tokyo and japan using external file calling
+          user:
+               name: "{{u3}}"
+               state: present
+
+
+        - name: creating user japan
+          user:
+               name: "{{u4}}"
+               state: present
+
+
+

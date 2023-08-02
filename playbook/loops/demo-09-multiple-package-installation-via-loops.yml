@@ -1,0 +1,16 @@
+---
+- name: variables in a loop
+  hosts: all
+  vars: 
+    web_service: 
+                -  vim
+                -  nano
+  tasks:
+    - name: restarting the service
+      yum:
+         name: "{{item}}" 
+         state: present
+     
+      loop: "{{web_service}}"
+
+

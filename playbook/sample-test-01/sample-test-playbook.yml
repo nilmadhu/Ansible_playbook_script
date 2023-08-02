@@ -1,0 +1,52 @@
+---
+
+- name: creating multiple things-installation, user, group creation, file and directiory and copy file
+  hosts: dev
+  vars_files:
+        - /root/playbook/sample-test-01/abcd-file.yml
+  vars:
+      u3: fruit
+      u4: nature
+  tasks:
+       - name: package installation of httpd
+         yum:
+             name: "{{u1}}"
+             state: present
+
+       - name: httpd service enabling and starting
+         service:
+                name: "{{u1}}"
+                state: started
+                enabled: yes
+
+       - name: installting git package
+         yum:
+             name: "{{u2}}"
+             state: present
+
+       - name: now creating user fruit
+         user:
+              name: "{{u3}}"
+              state: present
+
+       - name: creating nature user
+         user:
+              name: "{{u4}}"
+              state: present
+      
+       - name: creating an group called apple using global variable
+         group:
+               name: "{{u5}}"
+               state: present
+
+
+       - name: creating a sample testing file
+         file:
+              name: xyz.yml
+              state: touch
+
+
+       - name: copy the sample test file xyz.yml  from /root/playbook/sample-test/ to /root/playbook
+         copy:
+              src: /root/playbook/sample-test-01/pqr.yml
+              dest: /root/folder

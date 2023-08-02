@@ -1,0 +1,45 @@
+---
+
+- name: Installing packages by combinig all concepts
+  hosts: dev
+  #vars_files:
+   #  - name: /root/playbook/variables/globle-scope-variable/install-packages.yml
+  vars:
+    package_installing:
+       - name: curl
+       - name: vim
+       - name: nano
+    
+    user_creations:
+       -  name: aws
+       -  name: azure
+
+    group_creations:
+       -  name: tea
+       -  name: milk
+
+  tasks:
+   
+       - name: Installing packages using call fuction of files
+         yum:
+            name: "{{item.name}}"
+            state: present
+
+         loop: "{{package_installing}}"
+
+
+       - name: User creating
+         user:
+             name: "{{item.name}}"
+             state: present
+
+         loop: "{{user_creations}}"
+
+       - name: group creating
+         group:
+             name: "{{item.name}}"
+             state: present 
+
+         loop: "{{group_creations}}"
+
+

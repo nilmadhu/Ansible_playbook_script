@@ -1,0 +1,16 @@
+---
+
+- name: Installing package httpd tomcat server and starting the services
+  hosts: dev
+  tasks:
+        - name: Installing httpd package
+          yum: 
+              name: httpd
+              state: present
+         
+        - name: enable the services
+          service:
+                 name: httpd
+                 state: started
+                 enabled: yes
+

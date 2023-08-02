@@ -1,0 +1,26 @@
+---
+
+# checking command module to adding the existing user into secondary group
+
+- name: Testing of commond module
+  hosts: dev
+  vars:
+    u1: tesla
+    u2: fox
+  vars_files:
+        - /root/playbook/variables/play-scope-variable/test-vars.yml
+  tasks:
+         - name: create using tesla by calling variable
+           user:
+                name: "{{u1}}"
+                state: present
+
+         - name: creating group using variable call
+           group:
+                name: "{{u2}}"
+                state: present
+
+
+         - name: Testing of command module
+           shell: "{{u3}}"
+

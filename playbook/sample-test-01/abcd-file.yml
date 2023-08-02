@@ -1,0 +1,9 @@
+#Global variable scope using in playbook and also using play variable scope in the playbook (combination of vars)
+
+u1: httpd
+u2: git
+#u3: telsa --> using play scope
+#u4: fox ----> user creation using variable play scope
+u5: apple # group name
+
+

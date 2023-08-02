@@ -1,0 +1,5 @@
+
+
+# using of shells command
+
+u3: ansible dev -m shell -a "df -Th"

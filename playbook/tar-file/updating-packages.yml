@@ -1,0 +1,10 @@
+---
+
+- name: updating client packages packages
+  hosts: dev
+  tasks:
+      - name: updating packages
+        yum:
+           name: "*"
+           state: latest
+

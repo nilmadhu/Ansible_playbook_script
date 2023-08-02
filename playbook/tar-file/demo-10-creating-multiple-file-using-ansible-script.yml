@@ -1,0 +1,21 @@
+---
+
+- name: creating mutiple files from ansible script
+  hosts: dev
+  vars:
+    file_create:
+       - f1.yml
+       - f2.yml
+       - f3.yml
+       - f4.yml
+
+  tasks:
+       - name: creating files
+         file:
+             name: "{{item}}"
+             state: touch
+   
+         loop: "{{file_create}}"
+
+
+

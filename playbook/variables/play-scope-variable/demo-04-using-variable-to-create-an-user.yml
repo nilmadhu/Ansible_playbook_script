@@ -1,0 +1,23 @@
+---
+
+# Using variable call to create an user and roup in ansible clinet device
+
+
+- name: using variable to create an user and group
+  hosts: dev
+  vars:
+    u1: tesla
+    u2: fox
+  tasks:
+         - name: create using tesla by calling variable
+           user:
+                name: "{{u1}}"
+                state: present
+            
+         - name: creating group using variable call
+           group:
+                name: "{{u2}}"
+                state: present
+
+
+

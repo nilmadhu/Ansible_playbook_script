@@ -1,0 +1,18 @@
+---
+
+- name: creating multiple user with UID under loop condition
+  hosts: dev
+  become: yes   # // it depends upon you whether you want to use or not
+  tasks:
+       - name: creating user via loop instered of using with-item variable
+         user:
+              name: "{{item.user}}"
+              uid: "{{item.uid}}"
+              state: present
+
+         with_items:
+              - { user: red, uid: 2001}
+              - { user: green, uid: 2002}
+              - { user: blue, uid: 2003}
+              - { user: yellow, uid: 2004}
+
